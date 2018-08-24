@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class FoosballApplication
+class Foosball
 
 fun main(args: Array<String>) {
-    runApplication<FoosballApplication>(*args)
+    runApplication<Foosball>(*args)
 }
