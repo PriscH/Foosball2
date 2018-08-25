@@ -7,12 +7,14 @@ buildscript {
 		mavenCentral()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
+        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
 	}
 }
 
@@ -21,10 +23,17 @@ apply plugin: 'kotlin-jpa'
 apply plugin: 'kotlin-spring'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.moowork.node'
 
 group = 'jp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+node {
+    version = '6.6.0'
+    npmVersion = '3.10.7'
+    download = true
+}
 
 compileKotlin {
 	kotlinOptions {
@@ -72,3 +81,14 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+task webpack(type: NodeTask, dependsOn: 'npmInstall') {
+    def osName = System.getProperty("os.name").toLowerCase();
+    if (osName.contains("windows")) {
+        script = project.file('node_modules/webpack/bin/webpack.js')
+    } else {
+        script = project.file('node_modules/.bin/webpack')
+    }
+}
+
+processResources.dependsOn webpack

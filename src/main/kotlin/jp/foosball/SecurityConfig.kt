@@ -12,7 +12,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http
             .authorizeRequests()
-            .antMatchers("/", "/actuator/**", "/h2/**").permitAll()
+            .antMatchers("/", "/actuator/**", "/h2/**", "/js/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
