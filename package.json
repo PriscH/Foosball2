@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=development webpack -d"
+    "build": "cross-env NODE_ENV=development webpack --mode development"
   },
   "dependencies": {
     "vue": "^2.5.17"

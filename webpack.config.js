@@ -7,7 +7,6 @@ const ROOT = path.resolve(__dirname, 'src/main/js');
 const DEST = path.resolve(__dirname, 'build/resources/main/static');
 
 module.exports = {
-    mode: "development",
     entry: ROOT + '/main.js',
     output: {
         path: DEST,
