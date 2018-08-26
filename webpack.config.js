@@ -58,11 +58,14 @@ module.exports = {
                 'sass-loader?indentedSyntax'
             ]
         }, {
-            test: /\.(png|jpg|gif|svg)$/,
+            test: /\.(png|jpg|gif)$/,
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]?[hash]'
             }
+        }, {
+            test: /\.(woff|woff2|eot|ttf|svg)$/,
+            loader: 'url-loader?limit=100000'
         }]
     },
     resolve: {
