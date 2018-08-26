@@ -30,8 +30,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 node {
-    version = '6.6.0'
-    npmVersion = '3.10.7'
+    version = '10.9.0'
+    npmVersion = '6.4.0'
     download = true
 }
 
@@ -83,12 +83,13 @@ test {
 }
 
 task webpack(type: NodeTask, dependsOn: 'npmInstall') {
-    def osName = System.getProperty("os.name").toLowerCase();
+    def osName = System.getProperty("os.name").toLowerCase()
     if (osName.contains("windows")) {
         script = project.file('node_modules/webpack/bin/webpack.js')
     } else {
         script = project.file('node_modules/.bin/webpack')
     }
+    args = ['--mode=development']
 }
 
 processResources.dependsOn webpack

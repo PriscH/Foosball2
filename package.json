@@ -2,16 +2,12 @@
   "name": "foosball",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "build": "cross-env NODE_ENV=development webpack --mode development"
-  },
   "dependencies": {
     "vue": "^2.5.17"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
-    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "sass-loader": "^7.1.0",
