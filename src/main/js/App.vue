@@ -1,13 +1,40 @@
 <template>
     <v-app>
-        <v-toolbar app></v-toolbar>
         <v-content>
-            <v-container fluid>
-                <h1>Example View Template</h1>
-
-                <v-date-picker></v-date-picker>
-            </v-container>
+            <standings-table v-bind:headers="headers" v-bind:items="values"></standings-table>
         </v-content>
-        <v-footer app></v-footer>
     </v-app>
 </template>
+
+<script>
+    import StandingsTable from './dashboard/StandingsTable.vue'
+
+    export default {
+        data() {
+            return {
+                headers: [{
+                    text: 'A',
+                    value: 'a',
+                }, {
+                    text: 'B',
+                    value: 'b',
+                }, {
+                    text: 'C',
+                    value: 'c',
+                }],
+                values: [{
+                    a: '1',
+                    b: '2',
+                    c: '3'
+                }, {
+                    a: 'Uno',
+                    b: 'Dos',
+                    c: 'Tres'
+                }]
+            }
+        },
+        components: {
+            'standings-table': StandingsTable
+        }
+    }
+</script>
