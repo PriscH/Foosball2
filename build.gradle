@@ -31,7 +31,7 @@ sourceCompatibility = 1.8
 
 node {
     version = '10.9.0'
-    npmVersion = '6.4.0'
+    npmVersion = '6.4.1'
     download = true
 }
 
