@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const ROOT = path.resolve(__dirname, 'src/main/js');
-const DEST = path.resolve(__dirname, 'build/resources/main/static');
+const DEST = path.resolve(__dirname, 'target/resources/main/static');
 
 module.exports = {
     entry: ROOT + '/main.js',
