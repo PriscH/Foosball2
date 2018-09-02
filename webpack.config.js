@@ -69,9 +69,18 @@ module.exports = {
         }]
     },
     devServer: {
+        contentBase: DEST,
         historyApiFallback: true,
         noInfo: true,
-        overlay: true
+        overlay: true,
+        port: 8080,
+        proxy: {
+            '/api/**': {
+                target: 'http://localhost:8081',
+                secure: false,
+                prependPath: false
+            }
+        }
     },
     performance: {
         hints: false

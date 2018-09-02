@@ -4,10 +4,12 @@ import jp.foosball.dtos.PlayerStanding
 import jp.foosball.repositories.PlayerRepository
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
+@RequestMapping("/api")
 class PlayersController (
     private val playerRepository: PlayerRepository
 ) {

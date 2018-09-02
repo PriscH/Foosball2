@@ -2,6 +2,8 @@ buildscript {
 	ext {
 		kotlinVersion = '1.2.61'
 		springBootVersion = '2.1.0.M2'
+
+		isProd = System.properties['env'] == 'prod'
 	}
 	repositories {
 		mavenCentral()
@@ -83,14 +85,10 @@ test {
 	useJUnitPlatform()
 }
 
-task webpack(type: NodeTask, dependsOn: 'npmInstall') {
-    def osName = System.getProperty("os.name").toLowerCase()
-    if (osName.contains("windows")) {
-        script = project.file('node_modules/webpack/bin/webpack.js')
-    } else {
-        script = project.file('node_modules/.bin/webpack')
-    }
-    args = ['--mode=development']
+task webpack(type: NpmTask) {
+    args = ['run', 'build']
 }
 
-processResources.dependsOn webpack
+if (isProd) {
+    processResources.dependsOn webpack
+}

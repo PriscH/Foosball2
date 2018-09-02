@@ -18,7 +18,7 @@
             };
         },
         mounted() {
-            axios.get('players')
+            axios.get('api/players')
                  .then(response => (this.players = response.data));
         },
         methods: {
