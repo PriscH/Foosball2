@@ -11,11 +11,11 @@
     </v-data-table>
 </template>
 
-<script>
-    export default {
-        props: {
-            players: Array
-        },
+<script lang="ts">
+    import Vue from "vue";
+
+    export default Vue.extend({
+        props: ['players'],
         data() {
             return {
                 headers: [{
@@ -38,5 +38,5 @@
                 }]
             }
         }
-    }
+    });
 </script>

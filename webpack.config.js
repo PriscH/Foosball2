@@ -7,7 +7,7 @@ const ROOT = path.resolve(__dirname, 'src/main/js');
 const DEST = path.resolve(__dirname, 'target/resources/main/static');
 
 module.exports = {
-    entry: ROOT + '/main.js',
+    entry: ROOT + '/main.ts',
     output: {
         path: DEST,
         filename: 'js/bundle.js'
@@ -21,22 +21,17 @@ module.exports = {
                     // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
                     // the "scss" and "sass" values for the lang attribute to the right configs here.
                     // other preprocessors should work out of the box, no loader config like this necessary.
-                    'scss': [
-                        'vue-style-loader',
-                        'css-loader',
-                        'sass-loader'
-                    ],
-                    'sass': [
-                        'vue-style-loader',
-                        'css-loader',
-                        'sass-loader?indentedSyntax'
-                    ]
+                    'scss': 'vue-style-loader!css-loader!sass-loader',
+                    'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
                 }
             }
         }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            exclude: /node_modules/,
+            options: {
+                appendTsSuffixTo: [/\.vue$/],
+            }
         }, {
             test: /\.css$/,
             use: [
@@ -67,6 +62,12 @@ module.exports = {
             test: /\.(woff|woff2|eot|ttf|svg)$/,
             loader: 'url-loader?limit=100000'
         }]
+    },
+    resolve: {
+        extensions: ['.ts', '.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
     devServer: {
         contentBase: DEST,

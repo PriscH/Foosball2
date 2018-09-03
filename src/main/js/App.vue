@@ -7,11 +7,13 @@
     </v-app>
 </template>
 
-<script>
+<script lang="ts">
+    import Vue from 'vue';
     import axios from 'axios';
+
     import StandingsTable from './dashboard/StandingsTable.vue';
 
-    export default {
+    export default Vue.extend({
         data() {
             return {
                 players: []
@@ -19,16 +21,16 @@
         },
         mounted() {
             axios.get('api/players')
-                 .then(response => (this.players = response.data));
+                .then(response => (this.players = response.data));
         },
         methods: {
             greet: function () {
-                let test = 'Jaco'
-                alert('Hello ' + test + '!')
+                let test: string = 'Jaco';
+                alert('Hello ' + test + '!');
             }
         },
         components: {
             'standings-table': StandingsTable
         }
-    }
+    });
 </script>
