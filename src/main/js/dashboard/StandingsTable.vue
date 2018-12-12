@@ -1,5 +1,8 @@
 <template>
-    <v-data-table :headers="headers" :items="players" hide-actions class="elevation-1">
+    <v-data-table hide-actions class="elevation-1"
+                  :headers="headers"
+                  :items="players"
+    >
         <template slot="items" slot-scope="props">
             <td>{{ props.item.position }}</td>
             <td>{{ props.item.name }}</td>
